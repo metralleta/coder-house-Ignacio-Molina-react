@@ -1,28 +1,37 @@
 import CartWidget from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
+import logo from '../../assets/images/logo.png'
 
 function NavBar() {
     return (
-        <nav>
-            <h1>
-                <Link to="/">Mercadito Las Lechuzas</Link>
-            </h1>
-            <ul>
-                <li>
-                    <Link to="/category/jewelery">electronics</Link>
-                </li>
-                <li>
-                    <Link to="/category/electronics">jewelery</Link>
-                </li>
-                <li>
-                    <Link to="/category/men's clothing">men's clothing</Link>
-                </li>
-                <li>
-                    <Link to="/category/women's clothing">women's clothing</Link>
-                </li>
-            </ul>
-            <CartWidget />
-        </nav>
+        <header>
+            <div className="container">
+                <nav>
+                    <div className="logo">
+                        <Link to="/">
+                            <img src={logo} alt="Mercadito Las Lechuzas" />
+                        </Link>
+                    </div>
+                    <div className="list-menu">
+                        <ul>
+                            <li>
+                                <Link to="/category/jewelery">Electronics</Link>
+                            </li>
+                            <li>
+                                <Link to="/category/electronics">Jewelery</Link>
+                            </li>
+                            <li>
+                                <Link to="/category/men's clothing">Men's Clothing</Link>
+                            </li>
+                            <li>
+                                <Link to="/category/women's clothing">Women's Clothing</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <CartWidget />
+                </nav>
+            </div>
+        </header>
     )
 }
 

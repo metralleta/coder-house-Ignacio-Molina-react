@@ -20,7 +20,11 @@ function ItemDetailContainer() {
         fetchItem()
     }, [itemId])
 
-    return <ItemDetail itemDetail={item} />
+    return (
+        <div className="detail-container">
+            <ItemDetail itemDetail={item} />
+        </div>
+    )
 }
 
 export default ItemDetailContainer

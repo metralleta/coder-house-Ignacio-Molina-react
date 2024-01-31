@@ -25,9 +25,9 @@ function ItemListContainer() {
     }, [categoryId]) // Añadir categoryId como dependencia del useEffect
 
     return (
-        <div>
+        <section>
             <ItemList items={items} />
-        </div>
+        </section>
     )
 }
 
