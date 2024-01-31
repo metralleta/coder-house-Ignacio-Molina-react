@@ -1,29 +1,31 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemList from '../ItemList/ItemList'
 
-function ItemListContainer({ greeting }) {
+function ItemListContainer() {
     const [items, setItems] = useState([])
+    const { categoryId } = useParams() // Obtener categoryId de la URL
 
     useEffect(() => {
-        // Simulamos un fetch a una API
         const fetchItems = async () => {
             try {
-                const response = await fetch('https://fakestoreapi.com/products')
+                let url = 'https://fakestoreapi.com/products'
+                if (categoryId) {
+                    url += `/category/${categoryId}`
+                }
+                const response = await fetch(url)
                 const data = await response.json()
                 setItems(data)
             } catch (error) {
-                console.log('Error en el fetch a la aAPI: ', error)
+                console.log('Error en el fetch a la API: ', error)
             }
         }
 
-        // Ejecutamos la función con el llamado a la API
         fetchItems()
-    }, [])
+    }, [categoryId]) // Añadir categoryId como dependencia del useEffect
 
     return (
         <div>
-            <h1>{greeting}</h1>
-            // Pasamos la prop items al componente ItemList para que liste los items
             <ItemList items={items} />
         </div>
     )

@@ -1,11 +1,18 @@
+import { Route, Routes } from 'react-router-dom'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 
 function App() {
     return (
         <>
             <NavBar />
-            <ItemListContainer greeting="Bienvenidos a Apícola Las Lechuzas" />
+            <Routes>
+                <Route exact path="/" element={<ItemListContainer />} />
+                <Route exact path="/category/:categoryId" element={<ItemListContainer />} />
+                <Route exact path="/item/:itemId" element={<ItemDetailContainer />} />
+                <Route path="*" element={<h1>404 No se encuentra la página</h1>} />
+            </Routes>
         </>
     )
 }
